@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch.7 템플릿 문법 - 기본</title>
+</head>
+<body>
+  
+  <div id="app">
+
+    <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+    <!-- <p id="abc1234">{{ num }}</p> -->
+    <p>{{ doubleNum }}</p>
+
+    <div v-if="loading">
+      loading...
+    </div>
+    <div v-else>
+      test user has been logged in
+    </div>
+    <!-- v-if와 v-show의 차이점 = v-if는 false일 때 div 아예 삭제, v-show는 style로 display: none; 됨 -->
+    <div v-show="loading">
+      loading...
+    </div>
+
+    <!-- TODO: input 박스를 만들고 입력된 값을 p 태그에 출력해보세요 -->
+    <input type="text" v-model="message">
+    <p>Message is: {{ message }}</p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+        uuid: 'abc1234',
+        name: 'text-blue',
+        loading: true,
+        message: '',
+      },
+      computed: {
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      },
+    });
+  </script>
+
+</body>
+</html>
